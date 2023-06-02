@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelaap/UI/widget/app_large_text.dart';
 import 'package:travelaap/UI/widget/app_text.dart';
 import 'package:travelaap/UI/widget/responsive_button.dart';
+import 'package:travelaap/cubit/app_cubits.dart';
 
 class WelcomeInfo extends StatelessWidget {
   final int index;
@@ -30,7 +32,18 @@ class WelcomeInfo extends StatelessWidget {
                 ),
               ),
               SizedBox(child: Container(height: 40,),),
-              ResponsiveButton()
+              GestureDetector(
+                onTap: (){
+                  BlocProvider.of<AppCubits>(context).getData();
+                },
+                child: Container(
+                    width: 200,
+                    child: Row( // pois estuo usando flexible no botao
+                      children: [
+                        ResponsiveButton(),
+                      ],
+                    )),
+              )
             ],
           ),
           Column(
